@@ -23,10 +23,10 @@ RenderSettings:
   m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
-  m_AmbientIntensity: 1
+  m_AmbientIntensity: 0.65
   m_AmbientMode: 0
-  m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 2100000, guid: c051fe5a20f72814f9643eb10ebbd2fc, type: 2}
+  m_SubtractiveShadowColor: {r: 0.754717, g: 0.754717, b: 0.754717, a: 1}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 6eecb3bb77b3f7a43a504fceda3b0b5f, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -2684,9 +2684,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   adanaROADS:
-  - {fileID: 7198813650945321512, guid: 5412af66371aae347848a1a4e443356e, type: 3}
   - {fileID: 5074092806347109481, guid: ce3db089bee004f4a92177a1f3f02778, type: 3}
-  - {fileID: 7198813650945321512, guid: 3278d40d09ba33a4cac341fe898faac0, type: 3}
+  - {fileID: 5074092806347109481, guid: 0a55241ff601f6a4083883da06f27bd9, type: 3}
   enemyCars:
   - {fileID: 5018191105468725774, guid: 50d55c712c4af204e9682d0a361029d2, type: 3}
   - {fileID: 5018191105468725774, guid: 254798b92d4814b478cc9c1ad5cadb13, type: 3}
