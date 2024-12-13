@@ -2694,6 +2694,7 @@ MonoBehaviour:
   - {fileID: 257390824}
   - {fileID: 1896511810}
   - {fileID: 1200126271}
+  chaseModeRate: 30
   roadCamera: {fileID: 400285661}
   carParent: {fileID: 1799976677}
   chaseCamera: {fileID: 180158944}

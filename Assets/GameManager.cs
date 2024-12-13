@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] List<GameObject> adanaROADS = new List<GameObject>();
     [SerializeField] List<GameObject> enemyCars = new List<GameObject>();
     [SerializeField] List<Transform> spawnPoints = new List<Transform>();
+    [SerializeField] float chaseModeRate = 25f;
     [SerializeField] private GameObject roadCamera;
     [SerializeField] private GameObject carParent;
     [SerializeField] private GameObject chaseCamera;
@@ -20,6 +21,7 @@ public class GameManager : MonoBehaviour
     PoliceSpawner spawner;
     private float spawnSpeed;
     private bool isSpawningEnemy;
+    private bool chaseMode;
 
     public int health = 4;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -31,6 +33,7 @@ public class GameManager : MonoBehaviour
         spawner= FindObjectOfType<PoliceSpawner>();
         isSpawningEnemy = true;
         StartCoroutine(SpawnEnemyCars());
+        StartCoroutine(GamePlanner());
 
     }
 
@@ -51,16 +54,42 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.X))
+        if (Input.GetKeyDown(KeyCode.X) && !chaseMode)
         {
-            StartChasing();
-            spawner.Spawn();
+            
+            
+            
         }
 
-        if (Input.GetKeyDown(KeyCode.M))
+        if (Input.GetKeyDown(KeyCode.M) && !chaseMode)
         {
             SpawnEnemyCar();
         }
+    }
+
+    private IEnumerator GamePlanner()
+    {
+        while (true)
+        {
+             yield return new WaitForSeconds(chaseModeRate); 
+             StartChaseMode();
+        }
+       
+    }
+
+    private void StartChaseMode()
+    {
+        chaseMode = true;
+        isSpawningEnemy = false;
+        StartChasing();
+        spawner.Spawn();
+        foreach (Transform child in carParent.transform)
+        {
+            // Child objeyi yok et
+            Destroy(child.gameObject);
+        }
+        
+        
     }
 
     void SpawnRoads()
@@ -100,6 +129,9 @@ public class GameManager : MonoBehaviour
     {
         ChangeCameraLook(false);
         HideCursor();
+        chaseMode = false;
+        isSpawningEnemy = true;
+        StartCoroutine(SpawnEnemyCars());
     }
 
     public void StartChasing()
