@@ -8,7 +8,7 @@ public class RoadScript : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        Destroy(this.gameObject, destroyTime);
+        Destroy(transform.parent.gameObject, destroyTime);
     }
 
     // Update is called once per frame

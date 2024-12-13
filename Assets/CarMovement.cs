@@ -8,6 +8,16 @@ public class CarMovement : MonoBehaviour
     [SerializeField] private float leftOffside = 8;
     [SerializeField] private float rightOffside = 7;
 
+
+    public enum Direction
+    {
+        LEFT,
+        RIGHT,
+        MIDDLE
+    }
+
+    public Direction direction = Direction.MIDDLE;
+
     private void Start()
     {
         // Animator bileşenini al
@@ -20,10 +30,32 @@ public class CarMovement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.D) && transform.position.z <= leftOffside)
         {
             MoveRight();
-        }if (Input.GetKeyDown(KeyCode.A) && transform.position.z >= -rightOffside)
+
+            if (direction == Direction.MIDDLE)
+            {
+                direction = Direction.RIGHT;
+            }
+            if (direction == Direction.LEFT)
+            {
+                direction = Direction.MIDDLE;
+            }
+            
+        }
+        
+        if (Input.GetKeyDown(KeyCode.A) && transform.position.z >= -rightOffside)
         {
             MoveLeft();
+            
+            if (direction == Direction.MIDDLE)
+            {
+                direction = Direction.LEFT;
+            }
+            if (direction == Direction.RIGHT)
+            {
+                direction = Direction.MIDDLE;
+            }
         }
+        
         if(Input.GetKeyDown(KeyCode.Space))
         {
             animator.SetTrigger("JUMP");
@@ -53,6 +85,9 @@ public class CarMovement : MonoBehaviour
     {
         transform.localPosition = new Vector3(transform.localPosition.x, 2.454934f, transform.localPosition.z);
     }
+
+
+
 
 
 
