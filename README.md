@@ -1,4 +1,4 @@
-# Midnight Riders - Unity Runner Tarzı Oyun
+# Midnight Riders
 
 ## İçindekiler
 - [Proje Hakkında](#proje-hakkında)
