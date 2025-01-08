@@ -55,6 +55,12 @@ public class CarMovement : MonoBehaviour
                 direction = Direction.MIDDLE;
             }
         }
+
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            transform.position = new Vector3(0,2.45f,0);
+            transform.rotation = Quaternion.Euler(0,0,0);
+        }
         
         if(Input.GetKeyDown(KeyCode.Space))
         {
@@ -86,6 +92,14 @@ public class CarMovement : MonoBehaviour
         transform.localPosition = new Vector3(transform.localPosition.x, 2.454934f, transform.localPosition.z);
     }
 
+    public void ResetAll()
+    {
+        if (direction == Direction.MIDDLE)
+        {
+            transform.position = new Vector3(0, 2.45f, 0);
+            transform.rotation = Quaternion.Euler(0, 0, 0);
+        }
+    }
 
 
 

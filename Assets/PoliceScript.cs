@@ -7,6 +7,7 @@ public class PoliceScript : MonoBehaviour
     [SerializeField] float chaseTime = 2f;
     [SerializeField] private float endChaseTime = 8f;
     CarMovement playerCar;
+    SoundHandler soundHandler;
     private Direction direction = Direction.MIDDLE;
     public bool isChasing = true;
 
@@ -21,6 +22,7 @@ public class PoliceScript : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         animator.SetTrigger("START");
+        soundHandler = FindAnyObjectByType<SoundHandler>();
 
         playerCar = Object.FindAnyObjectByType<CarMovement>();
     }
@@ -86,6 +88,7 @@ public class PoliceScript : MonoBehaviour
         }
 
         animator.SetTrigger("SHOOT");
+        soundHandler.Laser();
         isChasing = true;
     }
 

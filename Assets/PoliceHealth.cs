@@ -8,6 +8,7 @@ public class PoliceHealth : MonoBehaviour
     [SerializeField] Image healthBar;
     [SerializeField] GameObject deathEffect;
     GameManager gm;
+    SoundHandler soundHandler;
     CursorChanger cursorChanger;
     CreateImpulse impulse;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -16,6 +17,7 @@ public class PoliceHealth : MonoBehaviour
      gm = FindFirstObjectByType<GameManager>();
      cursorChanger = FindFirstObjectByType<CursorChanger>();
      impulse = FindFirstObjectByType<CreateImpulse>();
+     soundHandler = FindObjectOfType<SoundHandler>();
     }
 
     // Update is called once per frame
@@ -31,6 +33,7 @@ public class PoliceHealth : MonoBehaviour
         if (health >= 10)
         {
             health -= 10;
+            soundHandler.Shoot();
             impulse.ShakeThatBooty();
         }
         else
@@ -43,6 +46,7 @@ public class PoliceHealth : MonoBehaviour
     private void DestroyCar()
     {
         Instantiate(deathEffect, transform.position, Quaternion.identity);
+        soundHandler.Explosion();
         gm.StopChasing();
         Destroy(gameObject);
     }
